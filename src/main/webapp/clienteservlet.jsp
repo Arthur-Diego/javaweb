@@ -20,9 +20,13 @@
 	</form>
 	
 	<%
+	
+	int i = 0;
 		List<Cliente> lista = (List<Cliente>) request.getAttribute("lista");
 		for (Cliente c : lista) {
-			out.print(c.getEmail());
+			out.print(c.getEmail()+"<a href='cliente?i="+i+"'>excluir</a><br/>");
+			
+			i++;
 		}
 	%>
 </body>
