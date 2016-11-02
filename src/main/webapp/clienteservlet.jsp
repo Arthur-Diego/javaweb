@@ -3,8 +3,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+
+<script>
+	function confirmar(pi){
+		if(window.confirm("Deseja realmente excluir?")){
+				location.href = "cliente?i="+pi;
+		} 
+	}
+</script>
 </head>
 <body>
 	<%
@@ -24,7 +30,7 @@
 	int i = 0;
 		List<Cliente> lista = (List<Cliente>) request.getAttribute("lista");
 		for (Cliente c : lista) {
-			out.print(c.getEmail()+"<a href='cliente?i="+i+"'>excluir</a><br/>");
+			out.print(c.getEmail()+"<a href='javascript:confirmar("+i+")'>excluir</a><br/>");
 			
 			i++;
 		}
