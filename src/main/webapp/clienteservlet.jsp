@@ -29,21 +29,32 @@
 	%>
 
 	<form action="cliente" method="post">
-		<input type="hidden" name="i" value="<%=indice%>" /> 
-		<input type="text" value="<%out.print(cli.getEmail());%>" name="email"
-			id="nome2" /> 
-			<input value="salvar" type="submit" />
+		<input type="hidden" name="i" value="<%=indice%>" /> <input
+			type="text" value="<%out.print(cli.getEmail());%>" name="email"
+			id="nome2" /> <input value="salvar" type="submit" />
 	</form>
 
-	<%
-		int i = 0;
-		List<Cliente> lista = (List<Cliente>) request.getAttribute("lista");
-		for (Cliente c : lista) {
-			out.print(c.getEmail() + "<a href='javascript:confirmar(" + i
-					+ ")'>excluir</a><a href='javascript:editar(" + i + ")'>editar</a><br/><br/>");
+	<table border="1">
+		<tr>
+			<th>Nome</th>
+			<th>Excluir</th>
+			<th>Editar</th>
+		</tr>
 
-			i++;
-		}
-	%>
+		<%
+			int i = 0;
+			List<Cliente> lista = (List<Cliente>) request.getAttribute("lista");
+		%>
+		<%
+			for (Cliente c : lista) {
+				out.print("<tr>");
+				out.print("<td>" + c.getEmail() + "</td>");
+				out.print("<td><a href='javascript:confirmar(" + i + ")'>excluir</a></td>");
+				out.print("<td><a href='javascript:editar(" + i + ")'>editar</a></td>");
+				i++;
+				out.print("</tr>");
+			}
+		%>
+	</table>
 </body>
 </html>
